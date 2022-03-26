@@ -1,3 +1,5 @@
+var currentServer = "";
+
 class User {
     constructor(name, email, permissions, profilePicture) {
         this.name = name
@@ -51,6 +53,41 @@ class Server {
             this.channels.add(channels[i])
         }
         this.users = new Set()
+
+        let button = document.createElement("button");
+        let temp = document.createTextNode(this.name);
+        button.appendChild(temp);
+        button.addEventListener("click", () => this.loadRooms());
+        button.className = "serverButton";
+        document.getElementById("classes").appendChild(button);
+    }
+
+    loadRooms() {        
+        let childChecker = document.getElementById("rooms");
+        currentServer = this.name;
+
+        while(childChecker.hasChildNodes())
+        {
+            childChecker.removeChild(childChecker.children[0]);
+        }
+
+        for(let channel of this.channels) {
+            let button = document.createElement("button");
+            let temp = document.createTextNode(channel.name);
+            button.appendChild(temp);
+            button.addEventListener("click", () => this.colorChange(channel));
+            button.setAttribute("Id", channel.name)
+            button.className = "roomButton";
+            document.getElementById("rooms").appendChild(button);
+        }
+    }
+
+    colorChange(channel) {
+        for(let temp of this.channels){
+            document.getElementById(temp.name).style.color = "LightSlateGrey";
+        }
+
+        channel.loadChatroom()
     }
 
     name() {
@@ -107,6 +144,11 @@ class Channel {
     logs() {
         return this.chatLogs
     }
+
+    loadChatroom() {
+        document.getElementById("chatroomHeader").innerHTML = currentServer + "'s "+ this.name+ " Chatroom";
+        document.getElementById(this.name).style.color = "rgb(6, 87, 238)";
+    }
     // double check on how to link message with actual message in chatroom, right now its by text but could be by time/id
     message(message) {
         for(let i = 0; i < this.chatLogs.length; i++) {
@@ -159,3 +201,16 @@ class ChatMessage {
     }
 
 }
+
+let tempChannel = [
+    new Channel("Homework Help", "help"),
+    new Channel("Group chat", "Students"),
+    new Channel("Exam Prep", "Exam")
+]
+
+let servers = [
+    new Server("Calculus", "Math", tempChannel),
+    new Server("Writing", "English", tempChannel),
+    new Server("Chemistry", "Science", tempChannel),
+    new Server("Spanish", "Language", tempChannel)
+]
