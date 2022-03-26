@@ -4,9 +4,12 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <div id="classes" class="classes"></div>
+        <div id="classes" class="classes">
+            <button class="homeButton" onclick="goHome()"><i class="fa fa-home"></i></button>
+        </div>
 
         <div id="rooms" class="rooms"></div>
 
@@ -15,7 +18,7 @@
         <div class="chatroom">
             <div id="chatborder">
                 <div id="textLine">
-                    <input type="text" id="chatbox" placeholder="Type something there.">
+                    <input type="text" id="chatbox" placeholder="Type something here.">
                     <button id="send">Send</button>
                 </div>
             </div>
