@@ -8,13 +8,34 @@
 
 #calendar
 {
-    
-    width:900px;
+    flex-grow:1;
 
 }
 
-.container
+#calendarLink:hover
+{
+    text-decoration:underline;
+}
+
+#todoListLink:hover
+{
+    text-decoration:underline;
+}
+
+
+#todolist
+{
+    flex-grow:1;
+}
+
+.mainContainer
 {
     display:flex;
     flex-direction:row;
+}
+
+#homepage
+{
+    height:100%;
+    width:100%;
 }
