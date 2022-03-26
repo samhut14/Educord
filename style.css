@@ -25,10 +25,11 @@
   
   .chatroom {
     max-width: 600px;
+    height: 70%;
     font: 15px arial, sans-serif;
     background-color: white;
     border-style: solid;
-    margin-left: 250px;
+    margin-left: 275px;
     margin-top: 20px;
     box-shadow: 5px 5px 5px grey;
     border-radius: 50px;
@@ -38,12 +39,12 @@
     border-style: solid;
     background-color: #f6f9f6;
     border-width: 3px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     margin-left: 20px;
     margin-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 15px;
+    padding-top: 98%;
+    padding-bottom: 2%;
     padding-right: 20px;
     padding-left: 15px;
     border-radius: 15px;
@@ -57,12 +58,12 @@
   #chatbox {
     font: 17px arial, sans-serif;
     height: 22px;
-    width: 90%;
+    width: 87%;
   }
 
   #send {
     height: 28px;
-    width: 10%;
+    width: 13%;
     font-size: 16px;
     color: #f6f9f6;
     background-color: blue;
