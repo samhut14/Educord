@@ -54,6 +54,10 @@ class Server {
         }
         this.users = new Set()
 
+        this.createServerButton()
+    }
+
+    createServerButton() {
         let button = document.createElement("button");
         let temp = document.createTextNode(this.name);
         button.appendChild(temp);
@@ -220,9 +224,10 @@ let servers = [
 ]
 
 function sendMessage() {
+    
     let messages = document.getElementById("chatborder");
     let message = document.getElementById("chatbox");
-
+    
     let newMessage = document.createElement("p");
     newMessage.textContent = message.value;
 
