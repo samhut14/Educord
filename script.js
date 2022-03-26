@@ -44,6 +44,8 @@ class User {
     }
 }
 
+let currentUser = new User("GenericUsername", "example@gmail.com", "", "");
+
 class Server {
     constructor(name, department, channels) {
         this.name = name
@@ -224,13 +226,27 @@ let servers = [
 ]
 
 function sendMessage() {
-    
-    let messages = document.getElementById("chatborder");
-    let message = document.getElementById("chatbox");
-    
-    let newMessage = document.createElement("p");
-    newMessage.textContent = message.value;
+    let chatborder = document.getElementById("chatborder");
+    let chatbox = document.getElementById("chatbox");
+    let textLine = document.getElementById("textLine");
 
-    messages.insertBefore(newMessage, document.getElementById("textLine"));
-    message.value = "";
+    var currentdate = new Date();
+    var datetime = currentdate.getDate() + "/"
+        + (currentdate.getMonth() + 1) + "/"
+        + currentdate.getFullYear() + ", "
+        + currentdate.getHours() + ":"
+        + currentdate.getMinutes();
+
+    let newMessage = document.createElement("div");
+    let userInfo = document.createElement("div");
+    let messageText = document.createElement("div");
+
+    userInfo.textContent = `[${datetime}] ${currentUser.name}:`;
+    messageText.textContent = chatbox.value;
+
+    newMessage.appendChild(userInfo);
+    newMessage.appendChild(messageText);
+
+    chatborder.insertBefore(newMessage, textLine);
+    chatbox.value = "";
 }
