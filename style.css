@@ -1,1 +1,110 @@
+.classes {
+    height: 100%;
+    width: 75px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(6, 8, 12);
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .rooms {
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    margin-left: 75px;
+    background-color: rgb(53, 68, 99);
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .chatroom {
+    max-width: 600px;
+    font: 15px arial, sans-serif;
+    background-color: white;
+    border-style: solid;
+    margin-left: 250px;
+    margin-top: 20px;
+    box-shadow: 5px 5px 5px grey;
+    border-radius: 50px;
+  }
+  
+  #chatborder {
+    border-style: solid;
+    background-color: #f6f9f6;
+    border-width: 3px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 15px;
+    border-radius: 15px;
+  }
 
+  #textLine {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  #chatbox {
+    font: 17px arial, sans-serif;
+    height: 22px;
+    width: 90%;
+  }
+
+  #send {
+    height: 28px;
+    width: 10%;
+    font-size: 16px;
+    color: #f6f9f6;
+    background-color: blue;
+  }
+  
+  #chatroomHeader {
+      width: auto;
+      height: 20px;
+      margin-left: 335px;
+      margin-top: 15px;
+      font-size: 30px;
+  }
+  
+  .serverButton {
+      display: block;
+      height: 45px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      font-size: medium;
+      border-radius: 20%;
+      transition-duration: .4s;
+  }
+  
+  .serverButton:hover {
+      border-radius: 45%;
+  }
+  
+  .roomButton {
+      display: block;
+      border: none;
+      background: none;
+      color:lightslategray;
+      font-size: 15px;
+      font-style: italic;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 7px;
+      transition-duration: .4s;
+  }
+  
+  .roomButton:hover {
+      color: #f6f9f6;
+  }
+  
