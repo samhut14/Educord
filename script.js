@@ -202,6 +202,10 @@ class ChatMessage {
 
 }
 
+function goHome() {
+    
+}
+
 let tempChannel = [
     new Channel("Homework Help", "help"),
     new Channel("Group chat", "Students"),
