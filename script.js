@@ -218,3 +218,14 @@ let servers = [
     new Server("Chemistry", "Science", tempChannel),
     new Server("Spanish", "Language", tempChannel)
 ]
+
+function sendMessage() {
+    let messages = document.getElementById("chatborder");
+    let message = document.getElementById("chatbox");
+
+    let newMessage = document.createElement("p");
+    newMessage.textContent = message.value;
+
+    messages.insertBefore(newMessage, document.getElementById("textLine"));
+    message.value = "";
+}
