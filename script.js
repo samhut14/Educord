@@ -392,7 +392,9 @@ class homePage
         //Show the calendar
         this.cal.calendar.style.display = "";
 
-    
+        //Add switches 
+        this.addSwitches();
+
         //Append homepage to the body
         window.document.querySelector("body").appendChild(this.homePage);
     }
@@ -440,9 +442,9 @@ class homePage
     }
 }
 
+//Create a new homePage and render it
 let home = new homePage();
 home.render();
-home.addSwitches();
 
 
 
