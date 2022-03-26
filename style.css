@@ -1,6 +1,6 @@
 .classes {
     height: 100%;
-    width: 75px;
+    width: 90px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -17,7 +17,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    margin-left: 75px;
+    margin-left: 90px;
     background-color: rgb(53, 68, 99);
     overflow-x: hidden;
     padding-top: 20px;
@@ -82,7 +82,7 @@
       margin-left: auto;
       margin-right: auto;
       margin-top: 10px;
-      font-size: medium;
+      font-size: 14px;
       border-radius: 20%;
       transition-duration: .4s;
   }
