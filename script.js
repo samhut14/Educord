@@ -770,6 +770,6 @@ function sendMessage() {
     newMessage.appendChild(userInfo);
     newMessage.appendChild(messageText);
 
-    chatborder.insertBefore(newMessage, textLine);
+    chatborder.appendChild(newMessage, textLine);
     chatbox.value = "";
 }
