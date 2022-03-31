@@ -770,6 +770,19 @@ function sendMessage() {
     newMessage.appendChild(userInfo);
     newMessage.appendChild(messageText);
 
-    chatborder.appendChild(newMessage, textLine);
+    if (chatborder.childElementCount == 1) {
+        chatborder.appendChild(newMessage) 
+    }
+    else {chatborder.insertChildAtIndex(newMessage, 1)}
     chatbox.value = "";
+    console.log(chatborder.childElementCount)
 }
+
+Element.prototype.insertChildAtIndex = function(child, index) {
+    if (!index) index = 0
+    if (index >= this.children.length) {
+      this.appendChild(child)
+    } else {
+      this.insertBefore(child, this.children[index])
+    }
+  }
