@@ -5,10 +5,20 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="345293645708-nf7k6s24ea6590kmh1upvq8q19shvjo9.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
     </head>
     <body>
         <div id="classes" class="classes">
             <button class="homeButton" onclick="goHome()"><i class="fa fa-home"></i></button>
+        </div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </div>
         </div>
 
         <div id="serverOptions">

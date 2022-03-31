@@ -42,8 +42,6 @@ class User {
     }
 }
 
-let currentUser = new User("GenericUsername", "example@gmail.com", "", "");
-
 class Server {
     constructor(name, department, channels) {
         this.name = name
@@ -211,6 +209,31 @@ class ChatMessage {
 
 }
 
+let currentUser = new User("GenericUsername", "example@gmail.com", "", "");
+
+function onSignIn(googleUser){
+    var profile = googleUser.getBasicProfile();
+            console.log("ID: " + profile.getId()); 
+            console.log('Full Name: ' + profile.getName());
+            console.log("Image URL: " + profile.getImageUrl());
+            console.log("Email: " + profile.getEmail());
+    
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+            document.getElementById("myModal").style.display = "none";
+    }
+      function renderButton() {
+        gapi.signin2.render('my-signin2', {
+          'theme': 'dark'
+      });
+      }
+
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    document.getElementById("myModal").style.display = "none";
+}
 
 function goHome() {
     document.getElementById("serverOptions").setAttribute("display", "none");
