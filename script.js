@@ -378,9 +378,9 @@ class homePage
         this.side.createSideBar();
 
         //Next, attach the sideBar, todolist, and calendar to homePage
-        this.homePage.appendChild(this.side.sideBar);
         this.homePage.appendChild(this.cal.calendar);
         this.homePage.appendChild(this.to.todoList);
+        this.homePage.appendChild(this.side.sideBar);
 
         //Hide the todoList
         this.to.todoList.style.display = "none";
@@ -530,7 +530,7 @@ class Server {
         button.appendChild(temp);
         button.addEventListener("click", () => {
             this.loadRooms()
-            leaveHome()
+            leaveHome();
         }
             );
         button.className = "serverButton";
