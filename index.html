@@ -11,15 +11,17 @@
             <button class="homeButton" onclick="goHome()"><i class="fa fa-home"></i></button>
         </div>
 
-        <div id="rooms" class="rooms"></div>
+        <div id="serverOptions">
+            <div id="rooms" class="rooms"></div>
 
-        <div id="chatroomHeader"></div>
+            <div id="chatroomHeader"></div>
 
-        <div class="chatroom">
-            <div id="chatborder">
-                <div id="textLine">
-                    <input type="text" id="chatbox" placeholder="Type something here.">
-                    <button id="send">Send</button>
+            <div class="chatroom">
+                <div id="chatborder">
+                    <div id="textLine">
+                       <input type="text" id="chatbox" placeholder="Type something here.">
+                        <button id="send" onclick="sendText()">Send</button>
+                    </div>
                 </div>
             </div>
         </div> 
