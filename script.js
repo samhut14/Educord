@@ -528,7 +528,11 @@ class Server {
         let button = document.createElement("button");
         let temp = document.createTextNode(this.name);
         button.appendChild(temp);
-        button.addEventListener("click", () => this.loadRooms());
+        button.addEventListener("click", () => {
+            this.loadRooms()
+            leaveHome()
+        }
+            );
         button.className = "serverButton";
         document.getElementById("classes").appendChild(button);
     }
@@ -678,6 +682,13 @@ function goHome() {
     window.document.querySelector("#chatroomHeader").style.display = "none";
     window.document.querySelector(".chatroom").style.display = "none";
     home.showHomePage();
+}
+
+function leaveHome() {
+    home.hideHomePage();
+    window.document.querySelector("#rooms").style.display = "";
+    window.document.querySelector("#chatroomHeader").style.display = "";
+    window.document.querySelector(".chatroom").style.display = "";
 }
 
 let tempChannel = [
