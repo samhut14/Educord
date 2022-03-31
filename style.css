@@ -9,6 +9,19 @@
     overflow-x: hidden;
     padding-top: 20px;
   }
+
+  .homeButton {
+    background-color: DodgerBlue;
+    border: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+    color: white;
+    padding: 10px 12px;
+    font-size: 16px;
+    cursor: pointer;
+  }
   
   .rooms {
     height: 100%;
@@ -24,7 +37,7 @@
   }
   
   .chatroom {
-    max-width: 600px;
+    max-width: 80%;
     height: 70%;
     font: 15px arial, sans-serif;
     background-color: white;
@@ -34,7 +47,7 @@
     box-shadow: 5px 5px 5px grey;
     border-radius: 50px;
   }
-  
+
   #chatborder {
     border-style: solid;
     background-color: #f6f9f6;
@@ -43,27 +56,15 @@
     margin-bottom: 25px;
     margin-left: 20px;
     margin-right: 20px;
-    padding-top: 98%;
-    padding-bottom: 2%;
-    padding-right: 20px;
-    padding-left: 15px;
+    min-height: 600px;
+    max-width: 97%;
+    display: flex;
+    flex-direction: column-reverse;
     border-radius: 15px;
   }
 
-  .homeButton {
-    background-color: DodgerBlue;
-    border: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    
-    color: white;
-    padding: 10px 12px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
   #textLine {
+    margin: 2%;
     display: flex;
     flex-direction: row;
   }
@@ -85,7 +86,7 @@
   #chatroomHeader {
       width: auto;
       height: 20px;
-      margin-left: 335px;
+      margin-left: 45%;
       margin-top: 15px;
       font-size: 30px;
   }
