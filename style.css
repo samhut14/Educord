@@ -118,3 +118,44 @@
       color: #f6f9f6;
   }
   
+#sideBar
+{
+    border-style:solid;
+    border-color:black;
+    width:100px;
+    
+}
+
+#calendar
+{
+    flex-grow:1;
+
+}
+
+#calendarLink:hover
+{
+    text-decoration:underline;
+}
+
+#todoListLink:hover
+{
+    text-decoration:underline;
+}
+
+
+#todolist
+{
+    flex-grow:1;
+}
+
+.mainContainer
+{
+    display:flex;
+    flex-direction:row;
+}
+
+#homepage
+{
+    height:100%;
+    width:100%;
+}
