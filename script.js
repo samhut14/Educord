@@ -148,10 +148,6 @@ class Channel {
         return this.chatLogs
     }
 
-    sendText() {
-
-    }
-
     loadChatroom() {
         document.getElementById("chatroomHeader").innerHTML = this.server + "'s "+ this.name+ " Chatroom";
         document.getElementById(this.name).style.color = "rgb(6, 87, 238)";
