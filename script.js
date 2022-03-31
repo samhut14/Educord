@@ -440,6 +440,13 @@ class homePage
             }
         })
     }
+    
+    //This function is call to hide everything about the homepage
+    hideHomePage()
+    {
+        //Set the display of the homepage to be none
+    }
+
 }
 
 //Create a new homePage and render it
