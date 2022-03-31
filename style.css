@@ -145,7 +145,7 @@
 
 #todolist
 {
-    flex-grow:1;
+    flex-grow:.93;
 }
 
 .mainContainer

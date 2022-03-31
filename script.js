@@ -418,6 +418,7 @@ class homePage
 
                 //Show the calendar
                 this.cal.calendar.style.display = "";
+                window.dispatchEvent(new Event('resize'));
             }
         })
 
