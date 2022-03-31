@@ -445,6 +445,14 @@ class homePage
     hideHomePage()
     {
         //Set the display of the homepage to be none
+        this.homePage.style.display = "none";
+    }
+
+    //Show the homePage
+    showHomePage()
+    {
+        //Set the dispaly of the homepage to be ""
+        this.homePage.style.display = "";
     }
 
 }
@@ -452,6 +460,8 @@ class homePage
 //Create a new homePage and render it
 let home = new homePage();
 home.render();
+home.hideHomePage();
+home.showHomePage();
 
 
 
