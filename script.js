@@ -42,6 +42,8 @@ class User {
     }
 }
 
+let currentUser = new User("GenericUsername", "example@gmail.com", "", "");
+
 class Server {
     constructor(name, department, channels) {
         this.name = name
@@ -53,6 +55,10 @@ class Server {
 
         this.users = new Set()
 
+        this.createServerButton()
+    }
+
+    createServerButton() {
         let button = document.createElement("button");
         let temp = document.createTextNode(this.name);
         button.appendChild(temp);
@@ -238,3 +244,29 @@ let servers = [
     new Server("Chemistry", "Science", chemChannel),
     new Server("Spanish", "Language", spanChannel)
 ]
+
+function sendMessage() {
+    let chatborder = document.getElementById("chatborder");
+    let chatbox = document.getElementById("chatbox");
+    let textLine = document.getElementById("textLine");
+
+    var currentdate = new Date();
+    var datetime = currentdate.getDate() + "/"
+        + (currentdate.getMonth() + 1) + "/"
+        + currentdate.getFullYear() + ", "
+        + currentdate.getHours() + ":"
+        + currentdate.getMinutes();
+
+    let newMessage = document.createElement("div");
+    let userInfo = document.createElement("div");
+    let messageText = document.createElement("div");
+
+    userInfo.textContent = `[${datetime}] ${currentUser.name}:`;
+    messageText.textContent = chatbox.value;
+
+    newMessage.appendChild(userInfo);
+    newMessage.appendChild(messageText);
+
+    chatborder.insertBefore(newMessage, textLine);
+    chatbox.value = "";
+}
