@@ -1,5 +1,3 @@
-var currentServer = "";
-
 class User {
     constructor(name, email, permissions, profilePicture) {
         this.name = name
@@ -54,6 +52,7 @@ class Server {
         for (let i = 0; i < channels.length; i++) {
             this.channels.add(channels[i])
         }
+
         this.users = new Set()
 
         this.createServerButton()
@@ -70,7 +69,6 @@ class Server {
 
     loadRooms() {        
         let childChecker = document.getElementById("rooms");
-        currentServer = this.name;
 
         while(childChecker.hasChildNodes())
         {
@@ -136,8 +134,9 @@ class Server {
 }
 
 class Channel {
-    constructor(name, category) {
+    constructor(name, category, server) {
         this.chatLogs = [] // maybe make this into set?
+        this.server = server
         this.category = category
         this.name = name
     }
@@ -152,7 +151,7 @@ class Channel {
     }
 
     loadChatroom() {
-        document.getElementById("chatroomHeader").innerHTML = currentServer + "'s "+ this.name+ " Chatroom";
+        document.getElementById("chatroomHeader").innerHTML = this.server + "'s "+ this.name+ " Chatroom";
         document.getElementById(this.name).style.color = "rgb(6, 87, 238)";
     }
     // double check on how to link message with actual message in chatroom, right now its by text but could be by time/id
@@ -208,21 +207,38 @@ class ChatMessage {
 
 }
 
+
 function goHome() {
-    
+    document.getElementById("serverOptions").setAttribute("display", "none");
 }
 
-let tempChannel = [
-    new Channel("Homework Help", "help"),
-    new Channel("Group chat", "Students"),
-    new Channel("Exam Prep", "Exam")
+let spanChannel = [
+    new Channel("Homework Help", "help", "Spanish"),
+    new Channel("Group Chat", "Students", "Spanish"),
+    new Channel("Exam Prep", "Exam", "Spanish")
+]
+
+let chemChannel = [
+    new Channel("Homework Help", "help", "Chemistry"),
+    new Channel("Group Chat", "Students", "Chemistry"),
+    new Channel("Exam Prep", "Exam", "Chemistry")
+]
+let englChannel = [
+    new Channel("Homework Help", "help", "Writing"),
+    new Channel("Group Chat", "Students", "Writing"),
+    new Channel("Exam Prep", "Exam", "Writing")
+]
+let mathChannel = [
+    new Channel("Homework Help", "help", "Calculus"),
+    new Channel("Group Chat", "Students", "Calculus"),
+    new Channel("Exam Prep", "Exam", "Calculus")
 ]
 
 let servers = [
-    new Server("Calculus", "Math", tempChannel),
-    new Server("Writing", "English", tempChannel),
-    new Server("Chemistry", "Science", tempChannel),
-    new Server("Spanish", "Language", tempChannel)
+    new Server("Calculus", "Math", mathChannel),
+    new Server("Writing", "English", englChannel),
+    new Server("Chemistry", "Science", chemChannel),
+    new Server("Spanish", "Language", spanChannel)
 ]
 
 function sendMessage() {
