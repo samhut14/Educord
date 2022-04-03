@@ -524,7 +524,7 @@ class Server {
         this.createServerButton()
     }
 
-    createServerButton() {
+    createServerButton() { //creates the sidebar of server buttons 
         let button = document.createElement("button");
         let temp = document.createTextNode(this.name);
         button.appendChild(temp);
@@ -537,10 +537,10 @@ class Server {
         document.getElementById("classes").appendChild(button);
     }
 
-    loadRooms() {        
+    loadRooms() { //creates the chatrooms based on the channels stored on the server
         let childChecker = document.getElementById("rooms");
 
-        while(childChecker.hasChildNodes())
+        while(childChecker.hasChildNodes()) //removes the chatrooms previously listed
         {
             childChecker.removeChild(childChecker.children[0]);
         }
@@ -556,7 +556,7 @@ class Server {
         }
     }
 
-    colorChange(channel) {
+    colorChange(channel) { //resets the color to light grey
         for(let temp of this.channels){
             document.getElementById(temp.name).style.color = "LightSlateGrey";
         }
@@ -620,7 +620,7 @@ class Channel {
         return this.chatLogs
     }
 
-    loadChatroom() {
+    loadChatroom() { //changes the selected chatroom to blue
         document.getElementById("chatroomHeader").innerHTML = this.server + "'s "+ this.name+ " Chatroom";
         document.getElementById(this.name).style.color = "rgb(6, 87, 238)";
     }
@@ -702,6 +702,10 @@ var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
     document.getElementById("myModal").style.display = "none";
 }
+
+window.addEventListener("keypress", function(event) { //calls send message when user presses the enter button
+    if(event.key === 'Enter') sendMessage();
+})
 
 function goHome() {
 
