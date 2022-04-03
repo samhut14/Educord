@@ -417,6 +417,8 @@ class homePage
 
                 //Show the calendar
                 this.cal.calendar.style.display = "";
+
+                //Updates the calendar by resizing it
                 window.dispatchEvent(new Event('resize'));
             }
         })
@@ -453,13 +455,13 @@ class homePage
         //Resize the window to fit fullCalendar properly
         window.dispatchEvent(new Event('resize'));
     }
-
-    
-
 }
 
+//Create a new home page
 let home = new homePage();
 home.render();
+
+//Attach the homePage to body
 window.document.querySelector("body").appendChild(home.homePage);
 
 
@@ -703,16 +705,24 @@ span.onclick = function() {
     document.getElementById("myModal").style.display = "none";
 }
 
+//Goes to the homepage
 function goHome() {
 
+    //Hide the rooms bar, chatroom header, and chatroom from the display
     window.document.querySelector("#rooms").style.display = "none";
     window.document.querySelector("#chatroomHeader").style.display = "none";
     window.document.querySelector(".chatroom").style.display = "none";
+
+    //Shows the home page
     home.showHomePage();
 }
 
+//Leaves the home page
 function leaveHome() {
+    //Hides the home page
     home.hideHomePage();
+
+    //Display the room bar, chatroon, and chatroom header
     window.document.querySelector("#rooms").style.display = "";
     window.document.querySelector("#chatroomHeader").style.display = "";
     window.document.querySelector(".chatroom").style.display = "";
