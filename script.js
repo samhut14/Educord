@@ -478,6 +478,7 @@ class User {
         this.profilePicture = profilePicture
     }
 
+    // Getters
     servers() {
         return this.servers
     }
@@ -491,23 +492,23 @@ class User {
         return this.permissions
     }
 
-    addServer(server) {
+    addServer(server) { // adds a server for the user
         if (this.servers.has(server)) return false
         this.servers.add(server)
         return true
     }
     
-    removeServer(server) {
+    removeServer(server) { // removes a server from the user
         if (this.servers.has(server)) return false
         this.servers.delete(server)
         return true
     }
 
-    changePerms(perm) {
+    changePerms(perm) { // changes the user's permissions
         this.permissions = perm
     }
     
-    changePicture(picture) {
+    changePicture(picture) { // changes the user's profile picture
         this.picture = picture
     }
 }
@@ -565,7 +566,8 @@ class Server {
 
         channel.loadChatroom()
     }
-
+    
+    // Getters
     name() {
         return this.name
     }
@@ -579,26 +581,26 @@ class Server {
         return this.users
     }
 
-    setName(name) {
+    setName(name) { // name setter
         this.name = name
     }
-    addChannel(channel) {
+    addChannel(channel) { // adds a channel/chatrom to the server
         if (this.channels.has(channel)) return false
         this.channels.add(channel)
         return true
     }
-    removeChannel(channel) {
+    removeChannel(channel) { // removes a channel/chatroom from the server
         if (this.channels.has(channel)) return false
         this.channels.delete(channel)
         return true
     }
-    addUser(user) {
+    addUser(user) { // adds a user to the server
         if (this.users.has(user)) return false
         this.users.add(user)
         return true
     }
     
-    removeUser(user) {
+    removeUser(user) { // removes a user from the server
         if (this.users.has(user)) return false
         this.users.delete(user)
         return true
@@ -612,6 +614,8 @@ class Channel {
         this.category = category
         this.name = name
     }
+    
+    // Getters
     name() {
         return this.name
     }
@@ -681,7 +685,7 @@ class ChatMessage {
 
 let currentUser = new User("GenericUsername", "example@gmail.com", "", "");
 
-function onSignIn(googleUser){
+function onSignIn(googleUser){ // uses the Google API sign in
     var profile = googleUser.getBasicProfile();
             console.log("ID: " + profile.getId()); 
             console.log('Full Name: ' + profile.getName());
@@ -762,27 +766,28 @@ let servers = [
 ]
 
 function sendMessage() {
-    let chatborder = document.getElementById("chatborder");
-    let chatbox = document.getElementById("chatbox");
-    let textLine = document.getElementById("textLine");
+    let chatborder = document.getElementById("chatborder"); // parent, containing all the messages
+    let chatbox = document.getElementById("chatbox"); // input box
+    let textLine = document.getElementById("textLine"); // child of chatborder, parent to chatbox
 
-    var currentdate = new Date();
-    var datetime = currentdate.getDate() + "/"
+    var currentdate = new Date(); // obtains the current time
+    var datetime = currentdate.getDate() + "/" // contains the date and time information
         + (currentdate.getMonth() + 1) + "/"
         + currentdate.getFullYear() + ", "
         + currentdate.getHours() + ":"
         + currentdate.getMinutes();
 
-    let newMessage = document.createElement("div");
-    let userInfo = document.createElement("div");
-    let messageText = document.createElement("div");
+    let newMessage = document.createElement("div"); // the message to add to chatborder
+    let userInfo = document.createElement("div"); // the time and user information of the message
+    let messageText = document.createElement("div"); // the actual text of the message
 
     userInfo.textContent = `[${datetime}] ${currentUser.name}:`;
     messageText.textContent = chatbox.value;
 
-    newMessage.appendChild(userInfo);
-    newMessage.appendChild(messageText);
+    newMessage.appendChild(userInfo); // first append the new message with the information
+    newMessage.appendChild(messageText); // and then the text itself
 
+    // Appropriately inserts the new message to chatborder
     if (chatborder.childElementCount == 1) {
         chatborder.appendChild(newMessage) 
     }
