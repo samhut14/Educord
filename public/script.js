@@ -85,8 +85,8 @@ class calendar {
         //Next, attach cal to the body
         // window.document.querySelector("body").appendChild(this.calendar);
 
-        //Create a new FullCalendar, no new parameters for now
-        this.fullCalendar = new FullCalendar.Calendar(this.calendar, {
+        //Create a new xr, no new parameters for now
+        this.fullCalendar = new FullCalendar.Calendar(this.calendar , {
         });
 
         //Render fullCalendar
@@ -522,7 +522,7 @@ class Server {
                 chatborder.removeChild(chatborder.lastChild)
             }
 
-
+           
 
             currentUser.setCurrentRoom(this.name)
             
@@ -820,7 +820,7 @@ sendButton.addEventListener('click', (e) => {
 })
 
 socket.on('message', message => {
-    
+    console.log(message)
     sendMessage(message)
     chatBorder.scrollTop = chatBorder.scrollHeight;
 })
@@ -830,8 +830,6 @@ function sendMessage(message) {
     let chatborder = document.getElementById("chatborder"); // parent, containing all the messages
     let chatbox = document.getElementById("chatbox"); // input box
     let textLine = document.getElementById("textLine"); // child of chatborder, parent to chatbox
-
-    if (chatbox.value == "") return; // if the chatbox is empty, do nothing
 
     var currentdate = new Date(); // obtains the current time
     var datetime = currentdate.getDate() + "/" // contains the date and time information
@@ -852,6 +850,8 @@ function sendMessage(message) {
 
     newMessage.appendChild(userInfo); // first append the new message with the information
     newMessage.appendChild(messageText); // and then the text itself
+
+    console.log(message.time, message.username, message.text)
 
     // Appropriately inserts the new message to chatborder
     if (chatborder.childElementCount == 1) {
