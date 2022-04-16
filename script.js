@@ -829,15 +829,14 @@ function editServers() {
 
     if (action == "add") {
         let serverName = prompt("Enter server name to add: ");
-        // check duplicate HERE
-        let departmentName = prompt("Enter department name: ");
+        // let departmentName = prompt("Enter department name: ");
 
         let tempChannel = [
             new Channel("Homework Help", "help", serverName),
             new Channel("Group Chat", "Students", serverName),
             new Channel("Exam Prep", "Exam", serverName)
         ]
-        let newServer = new Server(serverName, departmentName, tempChannel);
+        let newServer = new Server(serverName, "", tempChannel);
     }
 
     else if (action == "delete") {
