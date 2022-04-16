@@ -541,13 +541,15 @@ class Server {
             this.loadRooms()
             leaveHome();
             let messages = document.getElementById('chatborder');
+            if (currentUser.room != "") {
+                socket.emit('leaveRoom', {})
+            }
+
             while (chatborder.childNodes.length > 2) {
                 chatborder.removeChild(chatborder.lastChild)
             }
 
-            if (currentUser.room != "") {
-                socket.emit('leaveRoom', {})
-            }
+
 
             currentUser.setCurrentRoom(this.name)
             
@@ -815,7 +817,7 @@ sendButton.addEventListener('click', (e) => {
 })
 
 socket.on('message', message => {
-    console.log(message)
+    
     sendMessage(message)
     chatBorder.scrollTop = chatBorder.scrollHeight;
 })

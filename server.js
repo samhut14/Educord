@@ -46,7 +46,8 @@ io.on('connection', socket => {
         const user = userLeave(socket.id)
         // sends message to all saying user disconnected
         let currRoom = user.room
-        
+
+        socket.leave(user.room)
         user.room = ""
     
         if (user) {
