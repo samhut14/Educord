@@ -1,18 +1,15 @@
 //Add links to the javascript in full calendar
 
 //Creates a class that will represent the sideBar
-class sideBar
-{
+class sideBar {
     //Creates a constructor for sideBar
-    constructor()
-    {
+    constructor() {
         //Stores the html content of sideBar
         this.sideBar = "";
     }
 
     //Creates the Side Bar in index.html
-    createSideBar()
-    {
+    createSideBar() {
         //Firstly, create a new div tag that will store the side bar
         this.sideBar = document.createElement("div");
 
@@ -34,7 +31,7 @@ class sideBar
 
         //Append homePage to sidebar
         this.sideBar.append(homePage);
-        
+
         //Create a new header tag
         let calendar = document.createElement("h3");
 
@@ -60,27 +57,24 @@ class sideBar
         this.sideBar.appendChild(todoList);
 
         //Attach sideBar to body
-       // window.document.querySelector("body").appendChild(this.sideBar);
+        // window.document.querySelector("body").appendChild(this.sideBar);
     }
 }
 
 //Represents a calendar for the user
-class calendar
-{
+class calendar {
     //Constructor for calendar class
-    constructor()
-    {
+    constructor() {
         //Contains the html content of claendar
         this.calendar;
 
         //Next, create a new fullCalendar to render
         this.fullCalendar;
-        
+
     }
 
     //Creates a new calendar for the homepage
-    createCalendar()
-    {
+    createCalendar() {
         //Firstly, create a new div element
         this.calendar = document.createElement("div");
 
@@ -88,12 +82,12 @@ class calendar
         this.calendar.setAttribute("id", "calendar");
 
         //Next, attach cal to the body
-       // window.document.querySelector("body").appendChild(this.calendar);
+        // window.document.querySelector("body").appendChild(this.calendar);
 
         //Create a new FullCalendar, no new parameters for now
-        this.fullCalendar = new FullCalendar.Calendar(this.calendar , {
+        this.fullCalendar = new FullCalendar.Calendar(this.calendar, {
         });
-    
+
         //Render fullCalendar
         this.fullCalendar.render();
 
@@ -104,18 +98,15 @@ class calendar
 }
 
 //To-Do List Class
-class todoList
-{
+class todoList {
     //Constructor for Todo-List
-    constructor()
-    {
+    constructor() {
         //Stores the html content of todoList
         this.todoList;
     }
 
     //Creates todoList
-    createTodoList()
-    {
+    createTodoList() {
         //Firstly, create a new div element called todoList
         this.todoList = document.createElement("div");
 
@@ -141,23 +132,20 @@ class todoList
     //Create an tag by passing in a class and id
     //Class and id won't be added to the tag if 
     //either of them are null
-    createTags(type, id, css)
-    {
+    createTags(type, id, css) {
         //Firstly, create the newElement by using the doucment querySelector to create
         let newElement = document.createElement(type);
 
         //Next, check if id is not null
         //If id is null
-        if(id != null)
-        {
+        if (id != null) {
             //Set the attribute of newElement to be id
             newElement.setAttribute("id", id);
         }
 
         //Next, check if css is not null
         //If css is null
-        if(css != null)
-        {
+        if (css != null) {
             //Set the class of newElement to be css
             newElement.setAttribute("class", css);
         }
@@ -167,8 +155,7 @@ class todoList
     }
 
     //Create TodoList Header
-    createHeader()
-    {
+    createHeader() {
         //Create the first div tag
         let div1 = this.createTags("div", null, "header");
 
@@ -190,8 +177,7 @@ class todoList
     }
 
     //Create div tag for project-form
-    createProjectForm()
-    {
+    createProjectForm() {
         //Create the first div tag
         let div1 = this.createTags("div", "project-form", null);
 
@@ -213,8 +199,7 @@ class todoList
     }
 
     //Create div tag for todo-form
-    createTodoForm()
-    {
+    createTodoForm() {
         //Create the first div tag
         let div1 = this.createTags("div", "todo-form", null);
 
@@ -236,8 +221,7 @@ class todoList
     }
 
     //Create a div tag for project-headers
-    createProjectHeaders()
-    {
+    createProjectHeaders() {
         //Create the first div tag
         let div1 = this.createTags("div", null, "project-headers");
 
@@ -262,8 +246,7 @@ class todoList
     }
 
     //Create a div-tag for form
-    createForm()
-    {
+    createForm() {
         //Create the first div tag
         let div1 = this.createTags("div", null, "form");
 
@@ -301,8 +284,7 @@ class todoList
     }
 
     //Create the div body
-    createBody()
-    {
+    createBody() {
         //Firstly, create the first div tag
         let div1 = this.createTags("div", null, "body");
 
@@ -340,11 +322,9 @@ let cal = new calendar();
 let to = new todoList();
 
 //Contains all information about the user homePage
-class homePage
-{
+class homePage {
     //Constructor for home page
-    constructor()
-    {
+    constructor() {
         //Create all three parts of the homepage
         //The sideBar
         this.side = new sideBar();
@@ -360,8 +340,7 @@ class homePage
     }
 
     //Creates the homepage 
-    render()
-    {
+    render() {
         //Create a new div tag for homepage
         this.homePage = document.createElement("div");
 
@@ -395,8 +374,7 @@ class homePage
     }
 
     //Add switches to the headers of sideBar
-    addSwitches()
-    {
+    addSwitches() {
         //Firstly, get the children of the sideBar
         let headers = this.side.sideBar.children;
 
@@ -410,8 +388,7 @@ class homePage
         calendarLink.addEventListener("click", (e) => {
             //Firstly, check if calendar is hidden
             //If the calendar is hidden
-            if(this.cal.calendar.style.display == "none")
-            {
+            if (this.cal.calendar.style.display == "none") {
                 //Hide todo list
                 this.to.todoList.style.display = "none";
 
@@ -424,12 +401,10 @@ class homePage
         })
 
         //Next, add an event listner to todoListLink
-        todoListLink.addEventListener("click", (e) =>
-        {
+        todoListLink.addEventListener("click", (e) => {
             //Firstly, check if the todoList is hidden
             //If the todoList is hidden
-            if(this.to.todoList.style.display == "none")
-            {
+            if (this.to.todoList.style.display == "none") {
                 //Hide the calendar
                 this.cal.calendar.style.display = "none";
 
@@ -438,17 +413,15 @@ class homePage
             }
         })
     }
-    
+
     //This function is call to hide everything about the homepage
-    hideHomePage()
-    {
+    hideHomePage() {
         //Set the display of the homepage to be none
         this.homePage.style.display = "none";
     }
 
     //Show the homePage
-    showHomePage()
-    {
+    showHomePage() {
         //Set the dispaly of the homepage to be ""
         this.homePage.style.display = "";
 
@@ -465,7 +438,7 @@ home.render();
 window.document.querySelector("body").appendChild(home.homePage);
 
 
-var currentServer = "";
+var currentServer = ""; // comment out??
 
 
 class User {
@@ -497,7 +470,7 @@ class User {
         this.servers.add(server)
         return true
     }
-    
+
     removeServer(server) { // removes a server from the user
         if (this.servers.has(server)) return false
         this.servers.delete(server)
@@ -507,7 +480,7 @@ class User {
     changePerms(perm) { // changes the user's permissions
         this.permissions = perm
     }
-    
+
     changePicture(picture) { // changes the user's profile picture
         this.picture = picture
     }
@@ -517,9 +490,9 @@ class Server {
     constructor(name, department, channels) {
         this.name = name
         this.department = department
-        this.channels = new Set()
+        this.channels = new Array();
         for (let i = 0; i < channels.length; i++) {
-            this.channels.add(channels[i])
+            this.channels.push(channels[i])
         }
 
         this.users = new Set()
@@ -534,39 +507,50 @@ class Server {
         button.addEventListener("click", () => {
             this.loadRooms()
             leaveHome();
-        }
-            );
+        });
         button.className = "serverButton";
-        document.getElementById("classes").appendChild(button);
+        button.id = this.name + "server";
+        document.getElementById("classes").insertBefore(button, document.getElementById("editServerBtn"));
     }
 
     loadRooms() { //creates the chatrooms based on the channels stored on the server
         let childChecker = document.getElementById("rooms");
 
-        while(childChecker.hasChildNodes()) //removes the chatrooms previously listed
+        while (childChecker.hasChildNodes()) //removes the chatrooms previously listed
         {
             childChecker.removeChild(childChecker.children[0]);
         }
 
-        for(let channel of this.channels) {
+        // Edit Channels button:
+        let button = document.createElement("button");
+        let temp = document.createTextNode("Edit Channels");
+        button.appendChild(temp);
+        button.addEventListener("click", () => editChannels());
+        button.className = "roomButton";
+        button.id = "editChannelBtn";
+        document.getElementById("rooms").appendChild(button);
+
+        // The rest of the channels:
+        for (let channel of this.channels) {
             let button = document.createElement("button");
             let temp = document.createTextNode(channel.name);
             button.appendChild(temp);
             button.addEventListener("click", () => this.colorChange(channel));
             button.setAttribute("Id", channel.name)
             button.className = "roomButton";
+            button.id = channel.name + "channel";
             document.getElementById("rooms").appendChild(button);
         }
     }
 
     colorChange(channel) { //resets the color to light grey
-        for(let temp of this.channels){
-            document.getElementById(temp.name).style.color = "LightSlateGrey";
+        for (let temp of this.channels) {
+            document.getElementById(temp.name + "channel").style.color = "LightSlateGrey";
         }
 
         channel.loadChatroom()
     }
-    
+
     // Getters
     name() {
         return this.name
@@ -584,22 +568,41 @@ class Server {
     setName(name) { // name setter
         this.name = name
     }
+
     addChannel(channel) { // adds a channel/chatrom to the server
-        if (this.channels.has(channel)) return false
-        this.channels.add(channel)
-        return true
+        for (let iterator of this.channels)
+            if (iterator.name == channel.name) {
+                alert("Channel already exists!")
+                return;
+            }
+
+        this.channels.push(channel);
+        let button = document.createElement("button");
+        let temp = document.createTextNode(channel.name);
+        button.appendChild(temp);
+        button.addEventListener("click", () => this.colorChange(channel));
+        button.setAttribute("Id", channel.name)
+        button.className = "roomButton";
+        button.id = channel.name + "channel";
+        document.getElementById("rooms").appendChild(button);
+
+        this.loadRooms();
     }
-    removeChannel(channel) { // removes a channel/chatroom from the server
-        if (this.channels.has(channel)) return false
-        this.channels.delete(channel)
-        return true
+    removeChannel(channelName) { // removes a channel/chatroom from the server
+        for (let i = 0; i < this.channels.length; i++)
+            if (this.channels[i].name == channelName) {
+                this.channels.splice(i, 1);
+                break;
+            }
+
+        this.loadRooms();
     }
+
     addUser(user) { // adds a user to the server
         if (this.users.has(user)) return false
         this.users.add(user)
         return true
     }
-    
     removeUser(user) { // removes a user from the server
         if (this.users.has(user)) return false
         this.users.delete(user)
@@ -614,7 +617,7 @@ class Channel {
         this.category = category
         this.name = name
     }
-    
+
     // Getters
     name() {
         return this.name
@@ -627,12 +630,12 @@ class Channel {
     }
 
     loadChatroom() { //changes the selected chatroom to blue
-        document.getElementById("chatroomHeader").innerHTML = this.server + "'s "+ this.name+ " Chatroom";
-        document.getElementById(this.name).style.color = "rgb(6, 87, 238)";
+        document.getElementById("chatroomHeader").innerHTML = this.server + "'s " + this.name + " Chatroom";
+        document.getElementById(this.name + "channel").style.color = "rgb(6, 87, 238)";
     }
     // double check on how to link message with actual message in chatroom, right now its by text but could be by time/id
     message(message) {
-        for(let i = 0; i < this.chatLogs.length; i++) {
+        for (let i = 0; i < this.chatLogs.length; i++) {
             if (message == this.chatLogs[i].text) return this.chatLogs[i]
         }
     }
@@ -642,7 +645,7 @@ class Channel {
 
     removeChat(message) {
         let found = false;
-        for(let i = 0; i < this.chatLogs.length; i++) {
+        for (let i = 0; i < this.chatLogs.length; i++) {
             if (message == this.chatLogs[i].text) {
                 this.chatLogs.splice(i, 1)
                 found = true;
@@ -685,32 +688,32 @@ class ChatMessage {
 
 let currentUser = new User("GenericUsername", "example@gmail.com", "", "");
 
-function onSignIn(googleUser){ // uses the Google API sign in
+function onSignIn(googleUser) { // uses the Google API sign in
     var profile = googleUser.getBasicProfile();
-            console.log("ID: " + profile.getId()); 
-            console.log('Full Name: ' + profile.getName());
-            console.log("Image URL: " + profile.getImageUrl());
-            console.log("Email: " + profile.getEmail());
-    
-            var id_token = googleUser.getAuthResponse().id_token;
-            console.log("ID Token: " + id_token);
-            document.getElementById("myModal").style.display = "none";
-    }
-      function renderButton() {
-        gapi.signin2.render('my-signin2', {
-          'theme': 'dark'
-      });
-      }
+    console.log("ID: " + profile.getId());
+    console.log('Full Name: ' + profile.getName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+    document.getElementById("myModal").style.display = "none";
+}
+function renderButton() {
+    gapi.signin2.render('my-signin2', {
+        'theme': 'dark'
+    });
+}
 
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
     document.getElementById("myModal").style.display = "none";
 }
 
-window.addEventListener("keypress", function(event) { //calls send message when user presses the enter button
-    if(event.key === 'Enter') sendMessage();
+window.addEventListener("keypress", function (event) { //calls send message when user presses the enter button
+    if (event.key === 'Enter') sendMessage();
 })
 
 function goHome() {
@@ -733,7 +736,7 @@ function leaveHome() {
     window.document.querySelector("#rooms").style.display = "";
     window.document.querySelector("#chatroomHeader").style.display = "";
     window.document.querySelector(".chatroom").style.display = "";
-    
+
 }
 
 let spanChannel = [
@@ -770,12 +773,16 @@ function sendMessage() {
     let chatbox = document.getElementById("chatbox"); // input box
     let textLine = document.getElementById("textLine"); // child of chatborder, parent to chatbox
 
+    if (chatbox.value == "") return; // if the chatbox is empty, do nothing
+
     var currentdate = new Date(); // obtains the current time
     var datetime = currentdate.getDate() + "/" // contains the date and time information
         + (currentdate.getMonth() + 1) + "/"
         + currentdate.getFullYear() + ", "
-        + currentdate.getHours() + ":"
-        + currentdate.getMinutes();
+        + currentdate.getHours() + ":";
+    if (currentdate.getMinutes() < 10)
+        datetime += "0";
+    datetime += currentdate.getMinutes();
 
     let newMessage = document.createElement("div"); // the message to add to chatborder
     let userInfo = document.createElement("div"); // the time and user information of the message
@@ -789,18 +796,96 @@ function sendMessage() {
 
     // Appropriately inserts the new message to chatborder
     if (chatborder.childElementCount == 1) {
-        chatborder.appendChild(newMessage) 
+        chatborder.appendChild(newMessage)
     }
-    else {chatborder.insertChildAtIndex(newMessage, 1)}
+    else { chatborder.insertChildAtIndex(newMessage, 1) }
     chatbox.value = "";
     console.log(chatborder.childElementCount)
 }
 
-Element.prototype.insertChildAtIndex = function(child, index) {
+Element.prototype.insertChildAtIndex = function (child, index) {
     if (!index) index = 0
     if (index >= this.children.length) {
-      this.appendChild(child)
+        this.appendChild(child)
     } else {
-      this.insertBefore(child, this.children[index])
+        this.insertBefore(child, this.children[index])
     }
-  }
+}
+
+function editServerBtn() {
+    let button = document.createElement("button");
+    let temp = document.createTextNode("Edit Server");
+    button.appendChild(temp);
+    button.addEventListener("click", () => editServers());
+    button.className = "serverButton";
+    button.id = "editServerBtn";
+    document.getElementById("classes").appendChild(button);
+}
+
+editServerBtn();
+
+function editServers() {
+    let action = prompt("Enter add or delete: ");
+
+    if (action == "add") {
+        let serverName = prompt("Enter server name to add: ");
+        // check duplicate HERE
+        let departmentName = prompt("Enter department name: ");
+
+        let tempChannel = [
+            new Channel("Homework Help", "help", serverName),
+            new Channel("Group Chat", "Students", serverName),
+            new Channel("Exam Prep", "Exam", serverName)
+        ]
+        let newServer = new Server(serverName, departmentName, tempChannel);
+    }
+
+    else if (action == "delete") {
+        serverName = prompt("Enter server name to delete: ");
+        document.getElementById("classes").removeChild(document.getElementById(serverName + "server"));
+    }
+}
+
+function editChannels() {
+    let action = prompt("Enter add or delete: ");
+
+    if (action == "add") {
+        let channelName = prompt("Enter channel name to add: ");
+        // let channelCategory = prompt("Enter channel category: ");
+
+        let newChannel = new Channel(channelName, "", servers[0].name);
+        servers[0].addChannel(newChannel);
+    }
+
+    else if (action == "delete") {
+        channelName = prompt("Enter channel name to delete: ");
+
+        servers[0].removeChannel(channelName);
+    }
+}
+
+function testSuite() {
+
+    function addServer() {
+        let originalNumber = document.querySelectorAll(".serverButton").length;
+        let newServer = new Server("TestServer99", "", "");
+
+        if (originalNumber = document.querySelectorAll(".serverButton").length == originalNumber + 1)
+            return "PASSED";
+
+        else return "FAILED";
+    }
+
+    function deleteServer() {
+        let originalNumber = document.querySelectorAll(".serverButton").length;
+        document.getElementById("classes").removeChild(document.getElementById("TestServer99server"));
+
+        if (originalNumber = document.querySelectorAll(".serverButton").length == originalNumber - 1)
+            return "PASSED";
+
+        else return "FAILED";
+    }
+
+    console.log("Test #1: adding a server " + addServer());
+    console.log("Test #2: deleting a server " + deleteServer());
+}
