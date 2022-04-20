@@ -1,5 +1,30 @@
 {
   "dependencies": {
-    "fullcalendar": "^5.10.2"
+    "express": "^4.17.3",
+    "fullcalendar": "^5.10.2",
+    "moment": "^2.29.2",
+    "socket.io": "^4.4.1"
+  },
+  "name": "educord",
+  "description": "realtime chat app for students and teachers",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jasem-Ali/Educord.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jasem-Ali/Educord/issues"
+  },
+  "homepage": "https://github.com/Jasem-Ali/Educord#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
+
