@@ -190,3 +190,12 @@
     height:100%;
     width:100%;
 }
+
+#tests {
+  margin-left: 87%;
+  color: white;
+  background-color: blue;
+  font-size: 14px;
+  border: none;
+  padding: 10px 20px;
+}
