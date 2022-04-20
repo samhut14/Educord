@@ -86,7 +86,7 @@ class calendar {
         // window.document.querySelector("body").appendChild(this.calendar);
 
         //Create a new xr, no new parameters for now
-        this.fullCalendar = new FullCalendar.Calendar(this.calendar , {
+        this.fullCalendar = new FullCalendar.Calendar(this.calendar, {
         });
 
         //Render fullCalendar
@@ -439,8 +439,6 @@ home.render();
 window.document.querySelector("body").appendChild(home.homePage);
 
 
-var currentServer = ""; // comment out??
-
 
 class User {
     constructor(name, email, permissions, profilePicture) {
@@ -465,6 +463,10 @@ class User {
     }
     perms() {
         return this.permissions
+    }
+
+    currentRoom() {
+        return this.room;
     }
 
     addServer(server) { // adds a server for the user
@@ -522,18 +524,18 @@ class Server {
                 chatborder.removeChild(chatborder.lastChild)
             }
 
-           
+
 
             currentUser.setCurrentRoom(this.name)
-            
+
             socket.emit('joinRoom', currentUser)
             // add userlist functionality?
             socket.on('roomUsers', (currentUser) => {
                 // outputRoomName(currentUser.room)
                 // outputUsers(currentUser.users)
             })
-            
-        } );
+
+        });
         button.className = "serverButton";
         button.id = this.name + "server";
         document.getElementById("classes").insertBefore(button, document.getElementById("editServerBtn"));
@@ -712,29 +714,29 @@ class ChatMessage {
 
 }
 
-let currentUser = new User("GenericUsername", "example@gmail.com", "", "");
+let currentUser = new User("Guest", "example@gmail.com", "", "");
 
 function setUser() {
 
 }
 
-function onSignIn(googleUser){ // uses the Google API sign in
+function onSignIn(googleUser) { // uses the Google API sign in
     var profile = googleUser.getBasicProfile();
-            console.log("ID: " + profile.getId()); 
-            console.log('Full Name: ' + profile.getName());
-            console.log("Image URL: " + profile.getImageUrl());
-            console.log("Email: " + profile.getEmail());
-    
-            var id_token = googleUser.getAuthResponse().id_token;
-            console.log("ID Token: " + id_token);
-            document.getElementById("myModal").style.display = "none";
-            currentUser = new User(profile.getName(), profile.getEmail(), "", profile.getImageUrl())
-            
-    }
-      function renderButton() {
-        gapi.signin2.render('my-signin2', {
-          'theme': 'dark'
-      });
+    console.log("ID: " + profile.getId());
+    console.log('Full Name: ' + profile.getName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+    document.getElementById("myModal").style.display = "none";
+    currentUser = new User(profile.getName(), profile.getEmail(), "", profile.getImageUrl())
+
+}
+function renderButton() {
+    gapi.signin2.render('my-signin2', {
+        'theme': 'dark'
+    });
 }
 
 
@@ -802,8 +804,8 @@ let sendButton = document.getElementById('send')
 let chatBorder = document.getElementById('chatborder')
 let sendBox = document.getElementById('chatbox')
 
-sendBox.addEventListener("keypress", function(event) { //calls send message when user presses the enter button
-    if(event.key === 'Enter') {
+sendBox.addEventListener("keypress", function (event) { //calls send message when user presses the enter button
+    if (event.key === 'Enter') {
         const msg = sendBox.value
 
         socket.emit('chatMessage', msg)
@@ -826,7 +828,7 @@ socket.on('message', message => {
 })
 
 function sendMessage(message) {
-   
+
     let chatborder = document.getElementById("chatborder"); // parent, containing all the messages
     let chatbox = document.getElementById("chatbox"); // input box
     let textLine = document.getElementById("textLine"); // child of chatborder, parent to chatbox
@@ -888,7 +890,6 @@ function editServers() {
 
     if (action == "add") {
         let serverName = prompt("Enter server name to add: ");
-        // let departmentName = prompt("Enter department name: ");
 
         let tempChannel = [
             new Channel("Homework Help", "help", serverName),
@@ -907,18 +908,23 @@ function editServers() {
 function editChannels() {
     let action = prompt("Enter add or delete: ");
 
+    let index = 0;
+    for (let i = 0; i < servers.length; i++) {
+        if (servers[i].name == currentUser.currentRoom())
+            index = i;
+    }
+
     if (action == "add") {
         let channelName = prompt("Enter channel name to add: ");
-        // let channelCategory = prompt("Enter channel category: ");
 
-        let newChannel = new Channel(channelName, "", servers[0].name);
-        servers[0].addChannel(newChannel);
+        let newChannel = new Channel(channelName, "", currentUser.currentRoom());
+        servers[index].addChannel(newChannel);
     }
 
     else if (action == "delete") {
         channelName = prompt("Enter channel name to delete: ");
 
-        servers[0].removeChannel(channelName);
+        servers[index].removeChannel(channelName);
     }
 }
 
